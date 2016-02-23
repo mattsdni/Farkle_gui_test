@@ -54,4 +54,10 @@ public class StateMachine
         currentState = stateName;
         stateMap.get(currentState).OnEnter();
     }
+
+    public void sendClick(int x, int y)
+    {
+        stateMap.get(currentState).sendClick(x,y);
+    }
+
 }

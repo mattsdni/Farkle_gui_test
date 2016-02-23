@@ -12,7 +12,7 @@ public class Button {
     PApplet p;
     int x,y,w,h;
     int color;
-    String text;
+    public String text;
     PFont font;
     int fontSize;
     boolean depressed;
@@ -39,13 +39,21 @@ public class Button {
             color = p.color(255);
 
             //check if the mouse button is down
-            System.out.println(p.mouseClicked());
+            //System.out.println(p.mouseClicked());
+
 
         }
         else
         {
             color = p.color(220);
         }
+    }
+
+    /**
+     * Returns true if x and y are inside the button
+     */
+    public boolean isClicked(int x, int y){
+        return (x > this.x && x < this.x+this.w && y > this.y && y < this.y+this.h);
     }
     public void draw()
     {

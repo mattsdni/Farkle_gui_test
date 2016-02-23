@@ -15,4 +15,6 @@ public interface IState
 
     public void OnExit();
 
+    public void sendClick(int x, int y);
+
 }

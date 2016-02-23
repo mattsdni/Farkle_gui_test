@@ -7,6 +7,8 @@ import processing.core.PConstants;
 import processing.core.PFont;
 import processing.core.PImage;
 
+import java.util.LinkedList;
+
 /**
  * Created by Matt on 7/7/2015.
  */
@@ -15,7 +17,7 @@ public class MainMenu extends PApplet implements IState
     PApplet p;
     PFont font;
     boolean[] downKeys;
-    Button b1;
+    LinkedList<Button> buttons;
 
     /**
      * Constructs the state
@@ -26,7 +28,8 @@ public class MainMenu extends PApplet implements IState
         this.p = p;
         this.font = font;
         this.downKeys = downKeys;
-        b1 = new Button(p,100,100,300,100,"Start", font);
+        buttons = new LinkedList<>();
+        buttons.add(new Button(p,100,100,300,100,"Start", font));
     }
 
     @Override
@@ -55,7 +58,7 @@ public class MainMenu extends PApplet implements IState
     public void Draw()
     {
         p.background(35, 49, 63);
-        b1.draw();
+        buttons.forEach(Button::draw);
     }
 
     @Override
@@ -74,6 +77,18 @@ public class MainMenu extends PApplet implements IState
     public void OnExit()
     {
 
+    }
+
+    @Override
+    /**
+     * Called when mouse clicked. Receives mouse x and y
+     */
+    public void sendClick(int x, int y) {
+        for (Button b : buttons){
+            if (b.isClicked(x,y)){
+                System.out.println(b.text);
+            }
+        }
     }
 
 }

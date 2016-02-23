@@ -84,4 +84,9 @@ public class FarkleGUI extends PApplet{
         }
     }
 
+    public void mouseClicked()
+    {
+        stateMachine.sendClick(mouseX,mouseY);
+    }
+
 }
