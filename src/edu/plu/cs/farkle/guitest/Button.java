@@ -52,8 +52,8 @@ public class Button {
     /**
      * Returns true if x and y are inside the button
      */
-    public boolean isClicked(int x, int y){
-        return (x > this.x && x < this.x+this.w && y > this.y && y < this.y+this.h);
+    public boolean isClicked(){
+        return (p.mouseX > x && p.mouseX < x+w && p.mouseY > y && p.mouseY < y+h);
     }
     public void draw()
     {

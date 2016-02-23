@@ -1,5 +1,7 @@
 package edu.plu.cs.farkle.guitest;
 
+import controlP5.ControlEvent;
+import controlP5.ControlP5;
 import processing.core.PApplet;
 import processing.core.PFont;
 
@@ -18,29 +20,26 @@ public class FarkleGUI extends PApplet{
     boolean[] downKeys = new boolean[256];
     int x = 0;
     PFont font;
-
-    public void settings() {
-        //make a 640x480px window
-        size(640,480, FX2D);
-
-        //start fullscreen
-        //fullScreen(FX2D);
-    }
+    ControlP5 ui;
 
     public void setup() {
+        size(640,480, P2D);
         noStroke();
         fill(102);
 
         //sets the top bar text
-        surface.setTitle("Farkle GUI Test");
+        frame.setTitle("Farkle GUI Test");
+
+        //initialize ui
+        ui = new ControlP5(this);
 
         //load font
         String dir = System.getProperty("user.dir");
-        font = createFont(dir+"/src//edu//plu//cs//farkle//data//arialbd.ttf",48);
+        font = createFont(dir+"/src//edu//plu//cs//farkle//data//OpenSans-Regular.ttf",48);
 
         //initialize state machine
         stateMachine = new StateMachine();
-        stateMachine.Put("mainmenu", new edu.plu.cs.farkle.states.MainMenu(this, font, downKeys));
+        stateMachine.Put("mainmenu", new edu.plu.cs.farkle.states.MainMenu(this, ui, font, downKeys));
     }
 
     public void draw() {
@@ -86,7 +85,12 @@ public class FarkleGUI extends PApplet{
 
     public void mouseClicked()
     {
-        stateMachine.sendClick(mouseX,mouseY);
+        stateMachine.mouseClicked();
+    }
+
+    public void controlEvent(ControlEvent e)
+    {
+        stateMachine.stateMap.get(stateMachine.currentState).receiveControlEvents(e);
     }
 
 }

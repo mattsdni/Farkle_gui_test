@@ -55,9 +55,9 @@ public class StateMachine
         stateMap.get(currentState).OnEnter();
     }
 
-    public void sendClick(int x, int y)
+    public void mouseClicked()
     {
-        stateMap.get(currentState).sendClick(x,y);
+        stateMap.get(currentState).mouseClicked();
     }
 
 }

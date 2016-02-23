@@ -13,5 +13,6 @@
     <orderEntry type="library" name="jogl-all" level="project" />
     <orderEntry type="library" name="jogl-all-natives-windows-amd64" level="project" />
     <orderEntry type="library" name="jna-4.1.0" level="project" />
+    <orderEntry type="library" name="controlP5" level="project" />
   </component>
 </module>

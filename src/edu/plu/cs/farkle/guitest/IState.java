@@ -1,20 +1,23 @@
 package edu.plu.cs.farkle.guitest;
 
 
+import controlP5.ControlEvent;
 
 /**
  * Created by Matt on 5/11/2015.
  */
 public interface IState
 {
-    public void Update(double elapsedTime);
+    void Update(double elapsedTime);
 
-    public void Draw();
+    void Draw();
 
-    public void OnEnter();
+    void OnEnter();
 
-    public void OnExit();
+    void OnExit();
 
-    public void sendClick(int x, int y);
+    void mouseClicked();
+
+    void receiveControlEvents(ControlEvent event);
 
 }
